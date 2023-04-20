@@ -9,6 +9,7 @@ import 'certificate/certificate.dart';
 import 'transaction/transaction.dart';
 import 'showcase/showcase.dart';
 import 'notifikasi/notifikasi.dart';
+import 'detailskelas/detailkelas.dart';
 
 void main() {
   runApp(MyApp());
@@ -75,9 +76,9 @@ class HomePage extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(12),
       child: ListView(
-        physics: BouncingScrollPhysics(),
+        physics: const BouncingScrollPhysics(),
         children: [
-          SizedBox(
+          const SizedBox(
             height: 20,
           ),
           Padding(
@@ -100,12 +101,12 @@ class HomePage extends StatelessWidget {
                           builder: (context) => MyNotifikasi(),
                         ));
                   },
-                  icon: Icon(Icons.notifications),
+                  icon: const Icon(Icons.notifications),
                 ),
               ],
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 20,
           ),
           Container(
@@ -122,14 +123,14 @@ class HomePage extends StatelessWidget {
                       borderRadius: BorderRadius.circular(10),
                       color: Colors.blue[200],
                     ),
-                    child: Center(
-                      child: Icon(
+                    child: const Center(
+                      child: const Icon(
                         size: 32,
                         Icons.play_arrow,
                       ),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 10,
                   ),
                   Text(
@@ -143,7 +144,7 @@ class HomePage extends StatelessWidget {
               ),
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 15,
           ),
           Text(
@@ -161,61 +162,71 @@ class HomePage extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 30),
               itemCount: items.length,
               itemBuilder: (BuildContext context, int index) {
-                return Card(
-                  child: Container(
-                    decoration:
-                        BoxDecoration(borderRadius: BorderRadius.circular(20)),
-                    margin: EdgeInsets.all(5),
-                    padding: EdgeInsets.all(5),
-                    child: Stack(
-                      children: [
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.stretch,
-                          children: [
-                            Expanded(
-                              child: Image.network(
-                                items[index].image,
-                                fit: BoxFit.fill,
-                                width: 40,
-                                height: 40,
-                              ),
-                            ),
-                            SizedBox(
-                              height: 10,
-                            ),
-                            Text(
-                              items[index].title,
-                              style: TextStyle(
-                                fontSize: 18,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                            SizedBox(
-                              height: 10,
-                            ),
-                            Row(
-                              children: [
-                                Expanded(
-                                  child: Text(
-                                    items[index].subtitle,
-                                    style: TextStyle(
-                                      fontSize: 15,
-                                    ),
-                                    maxLines: 3,
-                                    overflow: TextOverflow.visible,
-                                    softWrap: true,
-                                  ),
+                return InkWell(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => MyDetailKelas(),
+                      ),
+                    );
+                  },
+                  child: Card(
+                    child: Container(
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(20)),
+                      margin: EdgeInsets.all(5),
+                      padding: EdgeInsets.all(5),
+                      child: Stack(
+                        children: [
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.stretch,
+                            children: [
+                              Expanded(
+                                child: Image.network(
+                                  items[index].image,
+                                  fit: BoxFit.fill,
+                                  width: 40,
+                                  height: 40,
                                 ),
-                              ],
-                            )
-                          ],
-                        ),
-                      ],
+                              ),
+                              SizedBox(
+                                height: 10,
+                              ),
+                              Text(
+                                items[index].title,
+                                style: TextStyle(
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              SizedBox(
+                                height: 10,
+                              ),
+                              Row(
+                                children: [
+                                  Expanded(
+                                    child: Text(
+                                      items[index].subtitle,
+                                      style: TextStyle(
+                                        fontSize: 15,
+                                      ),
+                                      maxLines: 3,
+                                      overflow: TextOverflow.visible,
+                                      softWrap: true,
+                                    ),
+                                  ),
+                                ],
+                              )
+                            ],
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 );
               },
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 2,
                 childAspectRatio: 1.0,
                 crossAxisSpacing: 0.0,
@@ -360,20 +371,20 @@ class ProfilePage extends StatelessWidget {
               ),
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 20,
           ),
           Container(
             child: ListTile(
               tileColor: Colors.black12,
-              leading: Icon(Icons.document_scanner_outlined),
+              leading: const Icon(Icons.document_scanner_outlined),
               title: Text('My course'),
               trailing: IconButton(
                 onPressed: () {
                   Navigator.push(context,
                       MaterialPageRoute(builder: (context) => MyCourse()));
                 },
-                icon: Icon(Icons.arrow_right),
+                icon: const Icon(Icons.arrow_right),
               ),
             ),
           ),
@@ -394,7 +405,7 @@ class ProfilePage extends StatelessWidget {
               ),
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 20,
           ),
           Container(
@@ -411,20 +422,20 @@ class ProfilePage extends StatelessWidget {
               ),
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 20,
           ),
           Container(
             child: ListTile(
               tileColor: Colors.black12,
-              leading: Icon(Icons.movie_creation),
-              title: Text('My showcase'),
+              leading: const Icon(Icons.movie_creation),
+              title: const Text('My showcase'),
               trailing: IconButton(
                 onPressed: () {
                   Navigator.push(context,
                       MaterialPageRoute(builder: (context) => MyShowcase()));
                 },
-                icon: Icon(Icons.arrow_right),
+                icon: const Icon(Icons.arrow_right),
               ),
             ),
           ),
