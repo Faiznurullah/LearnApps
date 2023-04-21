@@ -185,9 +185,8 @@ class HomePage extends StatelessWidget {
                               Expanded(
                                 child: Image.network(
                                   items[index].image,
-                                  fit: BoxFit.fill,
+                                  fit: BoxFit.contain,
                                   width: 40,
-                                  height: 40,
                                 ),
                               ),
                               SizedBox(
